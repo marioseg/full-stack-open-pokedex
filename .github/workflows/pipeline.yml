@@ -10,28 +10,23 @@ jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
-      - name: default
-        run: echo "Default Action"
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: npm install
+        run: npm install
+      - name: lint
+        run: npm run eslint
+      - name: build
+        run: npm run build
       - name: test
+        run: npm run test
+      - name: Push Action
         if: ${{ github.event_name == 'push'}}
-        run: echo "Push action"
-      - name: conditional
-        if: ${{ github.event_name == 'pull_request'}}
-        run: echo "Pull action"
-      # - uses: actions/checkout@v3
-      # - uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '16'
-      # - name: npm install
-      #   run: npm install
-      # - name: lint
-      #   run: npm run eslint
-      # - name: build
-      #   run: npm run build
-      # - name: test
-      #   run: npm run test
-      # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-      #   with:
-      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-      #     heroku_app_name: "mariosegpokedex"
-      #     heroku_email: "marioseg_02@hotmail.com"
+        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "mariosegpokedex"
+          heroku_email: "marioseg_02@hotmail.com"
+      
