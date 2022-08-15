@@ -10,11 +10,14 @@ jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
-      - run: echo "Default Action"
-      - if: ${{ github.event_name == 'push'}}
-      - run: echo "Push action"
-      - if: ${{ github.event_name == 'pull-request'}}
-      - run: echo "Pull action"
+      - name: default
+        run: echo "Default Action"
+      - name: test
+        if: ${{ github.event_name == 'push'}}
+        run: echo "Push action"
+      - name: conditional
+        if: ${{ github.event_name == 'pull_request'}}
+        run: echo "Pull action"
       # - uses: actions/checkout@v3
       # - uses: actions/setup-node@v2
       #   with:
