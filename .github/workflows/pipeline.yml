@@ -14,7 +14,7 @@ jobs:
         run: echo "Default Action"
       - name: Push Action
         if: ${{ github.event_name == 'push'}}
-        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "mariosegpokedex"
