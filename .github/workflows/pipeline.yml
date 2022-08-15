@@ -22,9 +22,9 @@ jobs:
         run: npm run build
       # - name: test
       #   run: npm run test
-      # if: ${{ github.event_name == 'push' }}
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
+          if: ${{ github.event_name == 'push' }}
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "mariosegpokedex" #Must be unique in Heroku
           heroku_email: "marioseg_02@hotmail.com"
