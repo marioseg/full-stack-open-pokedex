@@ -67,7 +67,7 @@ jobs:
           username: GitHub
           color: '#ff00aa'
           avatarUrl: https://github.githubassets.com/images/modules/logos_page/Octocat.png
-          details: to   by ${{github.repository_owner}}
+          description: to https://mariosegpokedex.herokuapp.com/ by ${{github.repository_owner}}
           footer: Severity:Informational
           text: A new version of pokedex deployed
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
