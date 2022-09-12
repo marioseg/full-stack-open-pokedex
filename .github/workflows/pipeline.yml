@@ -30,7 +30,7 @@ jobs:
           heroku_app_name: "mariosegpokedex"
           heroku_email: "marioseg_02@hotmail.com"
       - name: Test Failure
-      uses: rjstone/discord-webhook-notify@v1
+        uses: rjstone/discord-webhook-notify@v1
         if: failure()
         with:
             severity: error
