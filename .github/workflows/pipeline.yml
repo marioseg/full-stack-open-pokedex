@@ -14,8 +14,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      -name: print
-        run: echo 'hola'
+      - name: Say hello
+        run: |
+          echo "Hello World!"
       - name: npm install
         run: npm install
       - name: lint
