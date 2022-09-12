@@ -26,7 +26,7 @@ jobs:
         if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '#skip')}}
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_api_key: ${{secrets.HEROKU_AP_KEY}}
           heroku_app_name: "mariosegpokedex"
           heroku_email: "marioseg_02@hotmail.com"
   tag_release:
