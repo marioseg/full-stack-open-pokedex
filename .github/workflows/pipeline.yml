@@ -16,7 +16,7 @@ jobs:
           node-version: '16'
       - name: Say hello
         run: |
-          echo ${{toJSON(github.event).commits}}
+          echo ${{github.event.head_commit}}
       - name: npm install
         run: npm install
       - name: lint
