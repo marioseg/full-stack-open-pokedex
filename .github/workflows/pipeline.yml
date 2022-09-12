@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '16'
       -name: print
-        run: echo '${{toJSON(github.event)}}'
+        run: echo 'hola'
       - name: npm install
         run: npm install
       - name: lint
