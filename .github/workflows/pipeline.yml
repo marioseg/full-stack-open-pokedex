@@ -43,3 +43,29 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         WITH_V: true
         DEFAULT_BUMP: 'patch'
+    - name: Test Failure
+      uses: rjstone/discord-webhook-notify@v1
+      if: ${{ failure() }}
+      with:
+          severity: 'error'
+          username: 'GitHub'
+          color: '#ff00aa'
+          avatarUrl: 'https://github.githubassets.com/images/modules/logos_page/Octocat.png'
+          description: 'This is a custom description.'
+          details: 'Custom details: Somebody set up us the bomb.'
+          footer: 'Severity:Error'.
+          text: 'Build Failed'.
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+    - name: Test Deployment
+      uses: rjstone/discord-webhook-notify@v1
+      if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '#skip')}}
+      with:
+          severity: 'info'
+          username: 'GitHub'
+          color: '#ff00aa'
+          avatarUrl: 'https://github.githubassets.com/images/modules/logos_page/Octocat.png'
+          description: 'By Mario'
+          details: 'Custom details: Somebody set up us the bomb.'
+          footer: 'Severity:Informational'.
+          text: 'A new version of pokedex deployed'.
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
