@@ -44,6 +44,8 @@ jobs:
         WITH_V: true
         DEFAULT_BUMP: 'patch'
   notifications:
+    runs-on: ubuntu-20.04
+    steps:
     - name: Test Failure
       uses: rjstone/discord-webhook-notify@v1
       if: failure()
